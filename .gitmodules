@@ -1,0 +1,2 @@
+[submodule "config/lite-xl/plugins/console/"]
+	url = https://github.com/lite-xl/console.git
