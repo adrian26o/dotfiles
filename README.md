@@ -4,16 +4,15 @@
 
 ## Contents
 
-#### 1. <a href="#media">:camera: Media</a>
+#### 1. <a href="#cameramedia">:camera: Media</a>
 ><h5>1.1 <a href="#keybinds">Keybinds</a></h5>
 ><h5>1.2 <a href="#showcase">Showcase</a></h5>
-><h5>1.3 <a href="#videos">Videos</a></h5>
-#### 2. <a href="#installation">:keyboard:Installation</a>
+#### 2. <a href="#keyboardinstallation">:keyboard:Installation</a>
 ><h5>2.1 <a href="#requeriments">Requeriments</a></h5>
 ><h5>2.2 <a href="#arch-linux">Arch Linux</a></h5>
 ><h5>2.3 <a href="#other-distros">Other distros</a>	</h5>
 ><h5>2.4 <a href="#preparation">Preparation</a></h5>
-#### 3. <a href="#resources">:pen:Resources</a>
+#### 3. <a href="#penresources">:pen:Resources</a>
 
 ## :camera:Media
 ### Keybinds
@@ -36,11 +35,6 @@
 ### Showcase
 <img src="assets/1.png">
 <img src="assets/2.png">
-
-### Videos
-<video src="assets/videos/general.mov"></video>
-<video src="assets/videos/layouts.mov"></video>
-<video src="assets/videos/notifications.mov"></video>
 
 ## :keyboard:Installation
 
@@ -214,7 +208,7 @@ Don't forget to rename the name of the following folders:
 and after this, i recommend reboot. <br>
 Enjoy :star:
 <!-- Thanks section {{{ -->
-## :pen: Resources
+## :pen:Resources
 
 <div class="grid">
 <div>
@@ -271,21 +265,3 @@ Enjoy :star:
 
 
 <!-- }}} -->
-
-<style>
-.grid {
-		display:flex;
-		flex-wrap: wrap;
-}
-.grid div {
-		width:50%;
-		text-align:center;
-		display:inline-block;
-	}
-
-.grid img {
-		width:80%;
-		border-radius:10px;
-	}
-
-</style>
