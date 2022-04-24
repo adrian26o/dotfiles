@@ -1,0 +1,42 @@
+#!/usr/bin/env bash
+
+playerctl="/usr/bin/playerctl"
+icon=""
+tag="player"
+
+case $1 in
+    "toggle")
+        status=$($playerctl status)
+        if [ $status == "Playing" ]; then
+            icon="$HOME/Scripts/stop.png"
+            status="Paused"
+        else
+            icon="$HOME/Scripts/play.png"
+            status="Playing"
+        fi
+        $playerctl play-pause
+        dunstify \
+        -h string:x-dunst-stack-tag:$tag \
+        $status \
+        -u low \
+        -I $icon
+    ;;
+    "next")
+        icon="$HOME/Scripts/next.png"
+        $playerctl next
+        dunstify \
+        -h string:x-dunst-stack-tag:$tag \
+        "Next track" \
+        -u low \
+        -I $icon
+    ;;
+    "prev")
+        icon="$HOME/Scripts/prev.png"
+        $playerctl previous
+        dunstify \
+        -h string:x-dunst-stack-tag:$tag \
+        "Previous track" \
+        -u low \
+        -I $icon
+    ;;
+esac

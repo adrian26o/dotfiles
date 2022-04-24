@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+
+pamixer=/usr/bin/pamixer
+icon="$HOME/Scripts/sound-icon.png"
+
+case $1 in
+    "up")
+        $pamixer -i 1
+    ;;
+    "down")
+        $pamixer -d 1
+    ;;
+    "mute")
+        $pamixer -t
+    ;;
+    *)
+    echo "Options:"
+    echo "up"
+    echo "down"
+    echo "mute"
+    ;;
+esac
+
+volume=$($pamixer --get-volume-human)
+if [ $volume == "0%" ] || [ $volume == "muted" ]; then 
+	icon="$HOME/Scripts/muted.png" 
+fi
+
+dunstify \
+    -h int:value:$volume \
+    -h string:x-dunst-stack-tag:volume \
+    "Volume level" \
+    "$volume" \
+    -u low \
+    -I $icon

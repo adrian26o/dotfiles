@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+light="/usr/bin/light"
+dunstify="/usr/bin/dunstify"
+
+tag="brightness"
+icon="$HOME/Scripts/brightness.png"
+
+case $1 in
+	"up")
+		sudo $light -A 5
+	;;
+	"down")
+		sudo $light -U 5
+	;;
+esac
+
+bright=$($light -G)
+$dunstify -h string:x-dunst-stack-tag:$tag -h int:value:$bright -I $icon "Brightness" -u low

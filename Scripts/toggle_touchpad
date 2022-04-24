@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+
+device="ETPS/2 Elantech Touchpad"
+xinput_text="Device Enabled (153):"
+icon_disabled="$HOME/Scripts/touchpad_disabled.png"
+icon_enabled="$HOME/Scripts/touchpad_enabled.png"
+tag="touchpad"
+dunstify="dunstify"
+case $1 in
+	"enable")
+		xinput enable "$device"
+		$dunstify -h string:x-dunst-stack-tag:$tag "Touchpad has been enabled" -I $icon_enabled -u low
+	;;
+	"disable")
+		xinput disable "$device"
+		$dunstify -h string:x-dunst-stack-tag:$tag "Touchpad has been disabled" -I $icon_disabled -u low
+	;;
+	"toggle")
+		status=$(grep "$xinput_text" <<< $(xinput list-props "$device") | sed -e "s/$xinput_text//;s/ //;")
+		
+		if [ $status == "1" ]
+		then
+			xinput disable "$device"
+			$dunstify -h string:x-dunst-stack-tag:$tag "Touchpad has been disabled" -I $icon_disabled -u low
+		else
+			xinput enable "$device"
+			$dunstify -h string:x-dunst-stack-tag:$tag "Touchpad has been enabled" -I $icon_enabled -u low
+		fi
+	;;
+	*)
+		echo "usage:"
+		echo "toggle_touchpad enable"
+		echo "toggle_touchpad disable"
+		echo "toggle_touchpad toggle"
+	;;
+esac

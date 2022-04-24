@@ -1,0 +1,11 @@
+#! /usr/bin/env bash
+
+path=~/.cache/user_img.png
+img=/var/lib/AccountsService/icons/$USER.png
+
+convert $img -alpha set -channel A -sparse-color Barycentric \
+  '%[fx:w],0 opaque  2,0 transparent' \
+	$path
+
+echo $USER
+

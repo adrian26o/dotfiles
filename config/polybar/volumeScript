@@ -1,0 +1,8 @@
+#! /usr/bin/env bash
+pamixer="/usr/bin/pamixer"
+
+volume=$($pamixer --get-volume-human)
+text="%{F#56B6C2} %{F#ABB2BF}$volume"
+if [ $volume == "muted" ]; then text="%{u#E06C75}%{F#E06C75} %{F#ABB2BF}$volume";fi
+
+echo $text

@@ -1,0 +1,49 @@
+#! /usr/bin/env python3
+
+# SCRIPT BY ADRIAN26o IN GITHUB
+# https://github.com/adrian26o
+
+import os, ntpath, sys
+
+class file:
+    def __init__(self,path):
+        self.path = path
+        self.name = ntpath.basename(path)
+
+class directory:
+    def __init__(self,path,_open=True,deep=0,max_rec=3):
+        self.max_rec = max_rec
+        self.path = path
+        childrens = os.listdir(self.path)
+        self.open = _open
+        self.deep = deep
+        self.dirs = []
+        self.files = []
+        home=os.environ["HOME"]
+        self.name = self.path.replace(home,"~")
+        if deep > 0: self.name = self.name.split("/").pop()
+        if max_rec < 1: return
+        self.files = [file(os.path.join(self.path,_file)) for _file in childrens if os.path.isfile(os.path.join(self.path,_file))]
+        self.dirs = [directory(os.path.join(self.path,_dir),True, deep + 1, max_rec - 1) for _dir in childrens if os.path.isdir(os.path.join(self.path,_dir))]
+
+    def rawText(self) -> str:
+        text=""
+        text+=" "+self.name+"\n"
+        if self.open == False: return text
+        for i in self.dirs:
+            for line in range(self.deep): text+="│ "
+            if(self.dirs.index(i) == self.dirs.__len__() - 1 and self.files.__len__() <= 0):  text +="└───"
+            else: text+="├─"
+            text+=i.rawText()
+
+        for i in self.files:
+            for line in range(self.deep): text+="│ "
+            if(self.files.index(i) == self.files.__len__() - 1): text+="└─"
+            else: text+="├─"
+            text+=" "+i.name+"\n"
+        
+        return text
+
+if __name__ == "__main__":
+    _dir = directory(os.getcwd())
+    print(_dir.rawText())

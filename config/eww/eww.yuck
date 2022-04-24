@@ -1,0 +1,178 @@
+(defpoll actived
+:interval "10s"
+:initial false
+"if [ -e ~/.menu ]; then echo true; else echo false; fi"
+)
+
+
+(defwidget metadata []
+    (box
+    :orientation "v"
+    :valign "center"
+    :class "metadata"
+    :halign "fill"
+    :space-evenly false
+    (box
+    :orientation "h"
+    :class "box"
+    :space-evenly false
+    (label :hexpand true :text "" :halign "start" :class "icon" :style "font-size: 35px;margin-left:10px;")
+    (box
+    :orientation "v"
+    :hexpand true
+    :style "margin:10px"
+        (label :text title :limit-width 18)
+        (label :markup "<small>by</small> ${artist}" :limit-width 20)
+    ))
+    (box
+    :orientation "h"
+    :halign "baseline"
+    :valign "start"
+    (button :class "buttons" :height 10 :onclick `~/Scripts/playerControl prev` "")
+    (button :class "buttons" :height 10 :onclick `~/Scripts/playerControl toggle` "")
+    (button :class "buttons" :height 10 :onclick `~/Scripts/playerControl next` "")
+    )
+    )
+)
+
+(defpoll artist :interval "5s"
+:initial "yes"
+:run-while actived
+`~/Scripts/getMetadata.py --artist`
+)
+
+(defpoll title :interval "5s"
+:initial "yes"
+:run-while actived
+`~/Scripts/getMetadata.py --title`
+)
+
+(defwidget powermenu [Halign]
+(box :class "powermenu" :orientation "v"
+    :halign Halign
+    (button :class "buttons reboot" :onclick "reboot" "")
+    (button :class "buttons lock" :onclick "dm-tool lock" "")
+    (button :class "buttons poweroff" :onclick "poweroff" "")
+)
+)
+
+(defpoll userName :interval "180000h" `~/.config/eww/userIMG`)
+
+
+(defwidget user []
+    (box :orientation "h"
+    :space-evenly false
+    
+    (label :hexpand true :text {userName} :style "padding: 0 20px 0 20px;" :class "box" :halign "center")
+    (image :hexpand true :class "userImg" :path "/home/${userName}/.cache/user_img.png" :image-height 70 :halign "center")
+    )
+)
+
+(defwidget infoProgress [Var Icon Class]
+(box
+    :space-evenly false
+    :orientation "v"
+    :valign "end"
+    (progress :height 110 :flipped true :class "progress ${Class}" :orientation "v" :halign "center" :value Var)
+    (label :class "icon ${Class}" :text Icon :style "margin-top:5px;margin-bottom:8px;")
+)
+)
+
+(defwidget temp []
+    (box :class "box"
+    :space-evenly true
+    (label :text {EWW_TEMPS.CPU} :class "temp")
+    (label :text "" :class "icon bigText temp")
+    )
+)
+
+(defwidget net []
+    (box :orientation "h"
+    (box :class "box netDown"
+    :space-evenly false
+    :orientation "v"
+    "Down"
+    (box :orientation "h"
+        :space-evenly false
+        :halign "center"
+        (label :text {round(EWW_NET.wlan0.NET_DOWN / 1000,1)})
+        (label :text "" :class "icon" :halign "end")
+    )
+    )
+    
+    (box :class "box netUp"
+    :width 100
+    :space-evenly false
+    :orientation "v"
+    "Up"
+    (box :orientation "h"
+        :space-evenly false
+        :halign "center"
+        (label :text {round(EWW_NET.wlan0.NET_UP / 1000,1)})
+        (label :text "" :class "icon" :halign "end")
+    )
+    )
+    )
+)
+
+
+(defwidget hor1 []
+    (box
+    (user)
+    )
+)
+
+(defwidget hor2 []
+    (box
+    :orientation "h"
+    :hexpand true
+    (metadata)
+    )
+)
+
+(defwidget hor3 []
+(box
+    :orientation "h"
+        :space-evenly false
+    (temp)
+    (net)
+)
+)
+
+(defwidget hor4 []
+    (box
+    :orientation "h"
+    :space-evenly true
+    (infoProgress :Var {EWW_RAM.used_mem_perc} :Icon "" :Class "ram")
+    (infoProgress :Var {EWW_CPU.avg} :Icon "" :Class "cpu")
+    (infoProgress :Var {EWW_DISK["/"].used_perc} :Icon "" :Class "disk")
+    (powermenu :Halign "center")
+    )
+)
+
+(defwidget mainBox []
+    (box
+    :space-evenly false
+    :orientation "vertical"
+    :class "mainBox"
+        (hor1)
+        (hor2)
+        (hor3)
+        (hor4)
+    )
+)
+
+
+(defwindow menu 
+    :monitor 0
+    :geometry (geometry
+        :x "0%"
+        :y "4%"
+        :width "1%"
+        :height "1%"
+        :anchor "top left"
+    )
+    :stacking "fg"
+    :wm-ignore true
+    (mainBox)
+)

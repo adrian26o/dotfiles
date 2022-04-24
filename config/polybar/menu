@@ -1,0 +1,11 @@
+#! /usr/bin/env bash
+
+file=~/.menu
+
+if [[ -e "$file" ]]; then
+  rm $file
+  eww close menu
+else
+  touch $file
+  eww open menu
+fi
