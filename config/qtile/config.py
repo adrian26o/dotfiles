@@ -24,6 +24,7 @@ explorer = "nautilus"
 
 screenshot_folder = environ["HOME"]
 record_folder = screenshot_folder
+
 keys = [
     # Navigate between windows
     Key([mod], "h", lazy.layout.left(), desc="Move focus to left"),
@@ -125,7 +126,7 @@ for i in groups:
 
 layouts = [
     layout.Columns(margin=5,border_width=0),
-    # layout.Max(),
+    layout.Max(),
     # Try more layouts by unleashing below layouts.
     # layout.Stack(num_stacks=2),
     # layout.Bsp(),
@@ -148,7 +149,7 @@ extension_defaults = widget_defaults.copy()
 
 screens = [
     Screen(
-    wallpaper='~/Wallpapers/5.png',
+    wallpaper='~/Wallpapers/tokyonight/9.png',
     wallpaper_mode='stretch'
     ),
 ]

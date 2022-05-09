@@ -1,7 +1,11 @@
 #! /usr/bin/env python3
 import json, requests
 
-w = requests.get("https://wttr.in/mexico_merida?format=j1")
+try:
+    w = requests.get("https://wttr.in/mexico_merida?format=j1")
+except:
+    print("Unknown condition")
+    exit()
 
 try:
     w = json.loads(w.text)

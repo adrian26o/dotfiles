@@ -1,15 +1,30 @@
-$white:#ABB2BF;
-$black:#282C34;
-$red:#E06C75;
-$green:#98C379;
-$yellow:#E5C07B;
-$blue:#61AFEF;
-$purple:#C678DD;
-$cyan:#56B6C2;
-$background:#21252b;
-$background-2:#383E49;
-$background-3:#2F333D;
-$orange:#d19a66;
+// TokyoNight
+$black:   #32344a;
+$red:     #f7768e;
+$green:   #9ece6a;
+$yellow:  #e0af68;
+$blue:    #7aa2f7;
+$purple: #ad8ee6;
+$cyan:    #449dab;
+$white:   #9699a8;
+$background: #1a1b26;
+$background-2: #24283b;
+$background-3: #24283b;
+$orange: #ff9e64;
+
+// Onedark
+// $white:#ABB2BF;
+// $black:#282C34;
+// $red:#E06C75;
+// $green:#98C379;
+// $yellow:#E5C07B;
+// $blue:#61AFEF;
+// $purple:#C678DD;
+// $cyan:#56B6C2;
+// $background:#21252b;
+// $background-2:#383E49;
+// $background-3:#2F333D;
+// $orange:#d19a66;
 
 
 window {
@@ -26,11 +41,19 @@ window {
 }
 
 .buttons {
+	all:unset;
     border: none;
     text-shadow:none;
     margin: 5px 10px 5px 10px;
     padding: 8px 16px 8px 16px;
-    font-family: "FontAwesome6Free"
+    font-family: "FontAwesome6Free";
+	transition: 1s;
+	background-color:$background-2;
+	border-radius: 5px;
+}
+
+.buttons:hover {
+	background-color: $black;
 }
 
 .icon {

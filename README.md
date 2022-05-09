@@ -1,6 +1,4 @@
-# Dotfiles
-
-<cite>My personal qtile and polybar configuration using <a href="https://github.com/joshdick/onedark.vim">onedark</a> color scheme.</cite>
+# :stars: Dotfiles :stars:
 
 ## Contents
 
@@ -33,7 +31,9 @@
 <img src="assets/no_modifier.png"> <br>
 
 ### Showcase
+<h4> Desktop </h4>
 <img src="assets/1.png">
+<h4> My own fetch!!! </h4>
 <img src="assets/2.png">
 
 ## :keyboard:Installation
@@ -259,6 +259,16 @@ Enjoy :star:
 <div>
 <h4><a href="https://github.com/UnnatShaneshwar/OneDarkWallpapers">Wallpapers</a></h4>
 <img src="https://github.com/UnnatShaneshwar/OneDarkWallpapers/blob/main/12.png?raw=true">
+</div>
+
+<div>
+<h4><a href="https://github.com/Fausto-Korpsvart/Tokyo-Night-GTK-Theme"> Tokyo Night GTK Theme</a></h4>
+<img src="https://github.com/Fausto-Korpsvart/Tokyo-Night-GTK-Theme/raw/master/screenshots/tokyonight_dark_theme.png">
+</div>
+
+<div>
+<h4><a href="https://github.com/zatchheems/tokyo-night-alacritty-theme">Tokyo Night Alacritty Theme</a></h4>
+<img src="https://user-images.githubusercontent.com/8506829/96374927-629b0000-113b-11eb-95f1-9b7b4f9630f9.png">
 </div>
 
 </div>
