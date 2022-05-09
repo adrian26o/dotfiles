@@ -3,12 +3,9 @@ pamixer="/usr/bin/pamixer"
 
 volume=$($pamixer --get-volume-human)
 text="$volume"
-code=0
 
 if [ $volume == "muted" ]; then 
 	text="$volume";
-	code=1;
 fi
 
 echo $text
-exit $code
