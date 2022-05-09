@@ -130,6 +130,10 @@ int main() {
 void getOs(char *var) {
 	char text[30];
 	FILE* f = fopen("/etc/os-release","r");
+	if(f == NULL) {
+		strcpy(var,"Unknown");
+		return;
+	}
 	fgets(text,30,f);
 
 	bool splited = false;
@@ -158,6 +162,10 @@ void getOs(char *var) {
 void getKernel(char *var) {
 	char text[30];
 	FILE* f = fopen("/proc/version","r");
+	if(f == NULL) {
+		strcpy(var,"Unknown");
+		return;
+	}
 	fgets(text,30,f);
 
 	char version[30];
@@ -178,6 +186,11 @@ void getKernel(char *var) {
 void getUptime(char *var) {
 	char text[30];
 	FILE* f = fopen("/proc/uptime","r");
+
+	if(f == NULL) {
+		strcpy(var,"Unknown");
+		return;
+	}
 
 	float time;
 	int hours, minutes;
@@ -200,12 +213,20 @@ void getUptime(char *var) {
 
 
 void getDE(char *var) {
+	if(getenv("DESKTOP_SESSION") == NULL) {
+		strcpy(var,"Unknown");
+		return;
+	}
 	strcpy(var,getenv("DESKTOP_SESSION"));
 }
 
 void getUser(char *var) {
 	char hostname[30];
 	FILE *f = fopen("/etc/hostname","r");
+	if(f == NULL) {
+		strcpy(var,"Unknown");
+		return;
+	}
 	fgets(hostname,30,f);
 
 	char username[30];
