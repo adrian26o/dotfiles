@@ -22,7 +22,7 @@
     :hexpand true
     :style "margin:10px"
         (label :text title :limit-width 18)
-        (label :markup "<small>by</small> ${artist}" :limit-width 20)
+        (label :markup "<small>by</small> ${artist}" :limit-width 18)
     ))
     (box
     :orientation "h"
@@ -36,13 +36,13 @@
 )
 
 (defpoll artist :interval "5s"
-:initial "yes"
+:initial "Unknown artist"
 :run-while actived
 `~/Scripts/getMetadata.py --artist`
 )
 
 (defpoll title :interval "5s"
-:initial "yes"
+:initial "Not playing"
 :run-while actived
 `~/Scripts/getMetadata.py --title`
 )
@@ -115,6 +115,47 @@
     )
 )
 
+(defwidget bluetooth []
+	(box
+	:orientation "h"
+	:space-evenly false
+	(box
+	:orientation "h"
+	:space-evenly false
+	:valign "fill"
+	:hexpand true
+	:class "box"
+	(label :text "" :class "bigText icon" :style "padding:6px;")
+	(label :text {device_connected ?: "Not connected"} :limit-width 19)
+	
+	)
+	(box
+	:orientation "v"
+	:space-evenly false
+	:halign "end"
+	:valign "center"
+	(button :class "buttons bth disconnect"
+		:visible {device_connected!="" ? true : false}
+		:onclick `bluetoothctl disconnect & notify-send "${device_connected}" "disconnected"`
+		""	
+	)
+	(button :class "buttons bth OFF"
+		:onclick `bluetoothctl power off & notify-send "Bluetooth off"`
+		""
+	)
+	(button :class "buttons bth ON"
+		:onclick `bluetoothctl power on & notify-send "Bluetooth on"`
+		""
+	)
+	)
+	)
+)
+
+(defpoll device_connected
+:interval "5s"
+:initial "Not connected"
+`bluetoothctl info | grep "Name" | sed "s/\\tName: //"`
+)
 
 (defwidget hor1 []
     (box
@@ -124,9 +165,10 @@
 
 (defwidget hor2 []
     (box
-    :orientation "h"
+    :orientation "v"
     :hexpand true
     (metadata)
+	(bluetooth)
     )
 )
 

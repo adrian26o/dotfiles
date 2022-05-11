@@ -128,3 +128,15 @@ window {
 .lock {
     color: $orange;
 }
+
+.bth {
+	&.ON {
+		color:$green;
+	}
+	&.OFF {
+		color:$red;
+	}
+	&.disconnect {
+		color:$orange;
+	}
+}
