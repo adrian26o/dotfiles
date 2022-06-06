@@ -1,31 +1,17 @@
-// TokyoNight
-$black:   #32344a;
-$red:     #f7768e;
-$green:   #9ece6a;
-$yellow:  #e0af68;
-$blue:    #7aa2f7;
-$purple: #ad8ee6;
-$cyan:    #449dab;
-$white:   #9699a8;
-$background: #1a1b26;
-$background-2: #24283b;
-$background-3: #24283b;
-$orange: #ff9e64;
+@use 'colors/RosePine' as colors;
 
-// Onedark
-// $white:#ABB2BF;
-// $black:#282C34;
-// $red:#E06C75;
-// $green:#98C379;
-// $yellow:#E5C07B;
-// $blue:#61AFEF;
-// $purple:#C678DD;
-// $cyan:#56B6C2;
-// $background:#21252b;
-// $background-2:#383E49;
-// $background-3:#2F333D;
-// $orange:#d19a66;
-
+$black: colors.$black;
+$red: colors.$red;
+$green: colors.$green;
+$yellow: colors.$yellow;
+$blue: colors.$blue;
+$purple: colors.$purple;
+$cyan: colors.$cyan;
+$white: colors.$white;
+$background: colors.$background;
+$background-2: colors.$background-2;
+$background-3: colors.$background-3;
+$orange: colors.$orange;
 
 window {
     background-color: transparent;

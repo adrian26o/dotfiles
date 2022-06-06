@@ -1,0 +1,7 @@
+(defwidget temp []
+    (box :class "box"
+    :space-evenly true
+    (label :text {EWW_TEMPS.CPU} :class "temp")
+    (label :text "" :class "icon bigText temp")
+    )
+)

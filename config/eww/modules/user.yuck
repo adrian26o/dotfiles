@@ -1,0 +1,10 @@
+(defwidget user []
+    (box :orientation "h"
+    :space-evenly false
+    
+    (label :hexpand true :text {userName} :style "padding: 0 20px 0 20px;" :class "box" :halign "center")
+    (image :hexpand true :class "userImg" :path "/home/${userName}/.cache/user_img.png" :image-height 70 :halign "center")
+    )
+)
+
+(defpoll userName :interval "180000h" `~/.config/eww/scripts/userIMG`)

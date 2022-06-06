@@ -1,0 +1,28 @@
+(defwidget net []
+    (box :orientation "h"
+    (box :class "box netDown"
+    :space-evenly false
+    :orientation "v"
+    "Down"
+    (box :orientation "h"
+        :space-evenly false
+        :halign "center"
+        (label :text {round(EWW_NET.wlan0.NET_DOWN / 1000,1)})
+        (label :text "" :class "icon" :halign "end")
+    )
+    )
+    
+    (box :class "box netUp"
+    :width 100
+    :space-evenly false
+    :orientation "v"
+    "Up"
+    (box :orientation "h"
+        :space-evenly false
+        :halign "center"
+        (label :text {round(EWW_NET.wlan0.NET_UP / 1000,1)})
+        (label :text "" :class "icon" :halign "end")
+    )
+    )
+    )
+)

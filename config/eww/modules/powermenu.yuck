@@ -1,0 +1,8 @@
+(defwidget powermenu [Halign]
+(box :class "powermenu" :orientation "v"
+    :halign Halign
+    (button :class "buttons reboot" :onclick "reboot" "")
+    (button :class "buttons lock" :onclick "dm-tool lock" "")
+    (button :class "buttons poweroff" :onclick "poweroff" "")
+)
+)

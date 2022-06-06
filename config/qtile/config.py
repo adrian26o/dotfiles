@@ -8,7 +8,7 @@
 ###################################################
 ###################################################
 
-from libqtile import bar, layout, widget
+from libqtile import layout
 from libqtile.config import Click, Drag, Group, Key, Match, Screen
 from libqtile.lazy import lazy
 from libqtile.utils import guess_terminal
@@ -24,6 +24,7 @@ explorer = "nautilus"
 
 screenshot_folder = environ["HOME"]
 record_folder = screenshot_folder
+wallpaper_file = '~/Wallpapers/tokyonight/9.png'
 
 keys = [
     # Navigate between windows
@@ -149,7 +150,7 @@ extension_defaults = widget_defaults.copy()
 
 screens = [
     Screen(
-    wallpaper='~/Wallpapers/tokyonight/9.png',
+    wallpaper=wallpaper_file,
     wallpaper_mode='stretch'
     ),
 ]

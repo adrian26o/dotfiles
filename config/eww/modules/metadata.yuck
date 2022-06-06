@@ -1,0 +1,39 @@
+(defwidget metadata []
+    (box
+    :orientation "v"
+    :valign "center"
+    :class "metadata"
+    :halign "fill"
+    :space-evenly false
+    (box
+    :orientation "h"
+    :class "box"
+    :space-evenly false
+    (label :hexpand true :text "" :halign "start" :class "icon" :style "font-size: 35px;margin-left:10px;")
+    (box
+    :orientation "v"
+    :hexpand true
+    :style "margin:10px"
+        (label :text title :limit-width 18)
+        (label :markup "<small>by</small> ${artist}" :limit-width 18)
+    ))
+    (box
+    :orientation "h"
+    :halign "baseline"
+    :valign "start"
+    (button :class "buttons" :height 10 :onclick `~/Scripts/playerControl prev` "")
+    (button :class "buttons" :height 10 :onclick `~/Scripts/playerControl toggle` "")
+    (button :class "buttons" :height 10 :onclick `~/Scripts/playerControl next` "")
+    )
+    )
+)
+
+(defpoll artist :interval "5s"
+:initial "Unknown artist"
+`~/Scripts/getMetadata.py --artist`
+)
+
+(defpoll title :interval "5s"
+:initial "Not playing"
+`~/Scripts/getMetadata.py --title`
+)

@@ -1,0 +1,50 @@
+(defpoll device_connected
+:interval "5s"
+:initial "Not connected"
+`bluetoothctl info | grep "Name" | sed "s/\\tName: //"`
+)
+(defpoll bluetooth_actived
+:interval "5s"
+:initial true
+`bluetoothctl show | grep "Powered" | sed "s/\\tPowered: //;s/no/false/;s/yes/true/;"`
+)
+
+(defwidget bluetooth []
+	(box
+	:orientation "h"
+	:space-evenly false
+	(box
+	:orientation "h"
+	:space-evenly false
+	:valign "fill"
+	:hexpand true
+	:class "box"
+	(label :text "" :class "bigText icon" :style "padding:6px;")
+	(label :text {device_connected ?: "Not connected"} :limit-width 19)
+	)
+	(box
+	:orientation "v"
+	:space-evenly false
+	:halign "end"
+	:valign "center"
+	(button :class "buttons bth disconnect"
+		:visible {device_connected!="" ? true : false}
+		:onclick `bluetoothctl disconnect & notify-send "${device_connected}" "disconnected"`
+		:tooltip "disconnect device"
+		""	
+	)
+	(button :class "buttons bth OFF"
+		:onclick `bluetoothctl power off & notify-send "Bluetooth off"`
+		:visible {bluetooth_actived == true}
+		:tooltip "Power off bluetooth"
+		""
+	)
+	(button :class "buttons bth ON"
+		:onclick `bluetoothctl power on & notify-send "Bluetooth on"`
+		:visible {bluetooth_actived == false}
+		:tooltip "Power on bluetooth"
+		""
+	)
+	)
+	)
+)

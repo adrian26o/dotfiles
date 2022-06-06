@@ -1,0 +1,26 @@
+{
+	"onedark": {
+		"eww": "Onedark",
+		"polybar": "Onedark.ini",
+		"alacritty": "Onedark.yml",
+		"dunst": "Onedark",
+		"gtk-theme": "Adwaita-One-Dark",
+		"wallpaper": "~/Wallpapers/onedark/1.png"
+	},
+	"tokyonight": {
+		"eww": "TokyoNight",
+		"polybar": "TokyoNight.ini",
+		"alacritty": "TokyoNight.yml",
+		"dunst": "TokyoNight",
+		"gtk-theme": "Tokyonight_Dark",
+		"wallpaper": "~/Wallpapers/tokyonight/9.png"
+	},
+	"rosepine": {
+		"eww": "RosePine",
+		"polybar": "RosePine.ini",
+		"alacritty": "RosePine.yml",
+		"dunst": "RosePine",
+		"gtk-theme": "rose-pine-gtk",
+		"wallpaper": "~/Wallpapers/tokyonight/9.png"
+	}
+}

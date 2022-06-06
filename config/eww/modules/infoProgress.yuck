@@ -1,0 +1,10 @@
+(defwidget infoProgress [Var Icon Class]
+(box
+    :space-evenly false
+    :orientation "v"
+    :valign "end"
+	:tooltip "${round(Var, 0)}%"
+    (progress :height 110 :flipped true :class "progress ${Class}" :orientation "v" :halign "center" :value Var)
+    (label :class "icon ${Class}" :text Icon :style "margin-top:5px;margin-bottom:8px;")
+)
+)
