@@ -14,8 +14,8 @@
     :orientation "v"
     :hexpand true
     :style "margin:10px"
-        (label :text title :limit-width 18)
-        (label :markup "<small>by</small> ${artist}" :limit-width 18)
+        (label :text title :limit-width 18 :tooltip title)
+        (label :markup "<small>by</small> ${artist}" :limit-width 18 :tooltip artist)
     ))
     (box
     :orientation "h"

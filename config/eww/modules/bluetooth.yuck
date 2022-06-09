@@ -20,7 +20,7 @@
 	:hexpand true
 	:class "box"
 	(label :text "" :class "bigText icon" :style "padding:6px;")
-	(label :text {device_connected ?: "Not connected"} :limit-width 19)
+	(label :text {device_connected ?: "Not connected"} :tooltip {device_connected ?: "Not connected"} :limit-width 19)
 	)
 	(box
 	:orientation "v"
